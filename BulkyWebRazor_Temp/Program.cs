@@ -1,3 +1,7 @@
+using BulkyWebRazor_Temp.Data;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
+
 namespace BulkyWebRazor_Temp
 {
     public class Program
@@ -8,6 +12,7 @@ namespace BulkyWebRazor_Temp
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
